@@ -1,36 +1,15 @@
-import { useState } from "react";
-import './CardProd.css'
-
-function CardProd(props) {
-  const [quantidade, setQuantidade] = useState(0);
-
+function CardProduto({ produto, adicionar }) {
   return (
-    <div className="cardProd">
-      <h1>{props.nome}</h1>
+    <div className="card">
+      <h3>{produto.nome}</h3>
 
-      <h2>R$ {props.preco}</h2>
+      <p>R$ {produto.preco.toFixed(2)}</p>
 
-      <h3>R$ {props.preco * quantidade}</h3>
-
-      <p>Quantidade: {quantidade}</p>
-
-      <button onClick={() => setQuantidade(quantidade + 1)}>
+      <button onClick={() => adicionar(produto)}>
         Adicionar
       </button>
-
-      <button onClick={() => {
-
-        if(quantidade>0){setQuantidade(quantidade - 1)}}}>
-        Remover
-
-      </button>
-
-      <button onClick={() => setQuantidade(0)}>
-        Zerar
-      </button>
-      
     </div>
   );
 }
 
-export default CardProd;
+export default CardProduto;
